@@ -33,6 +33,17 @@ namespace StringCalculatorKata
 
         private (string[] delimiters, string cleanInputString) GetDelimitersAndCleanInputString(string inputString)
         {
+            if (inputString.StartsWith("//["))
+            {
+                var customDelimiterStr = inputString.Split('\n').First();
+
+                var customDelimiter = customDelimiterStr.Replace("//[", string.Empty).Replace("]", string.Empty);
+
+                var cleanInputString = inputString.Replace($"{customDelimiterStr}\n", string.Empty);
+
+                return (_default_delimiters.Append(customDelimiter).ToArray(), cleanInputString);
+            }
+
             if (inputString.StartsWith("//"))
             {
                 var customDelimiterStr = inputString.Split('\n').First();

@@ -110,5 +110,15 @@ namespace StringCalculatorKata.Tests
 
             action.Should().Throw<NegativesNotAllowed>().Where(x => x.Message == aExpectedExceptionMessage);
         }
+
+        [Test]
+        [TestCase("//[***]\n1***2***3", 6)]
+        [TestCase("//[alicatao]\n9alicatao2alicatao6", 17)]
+        public void return_sum_given_string_with_multiple_numbers_separated_by_custom_delimiter_between_brackets_with_any_length(string aGivenString, int expectedValue)
+        {
+            var calculatedValue = stringCalculator.Add(aGivenString);
+
+            calculatedValue.Should().Be(expectedValue);
+        }
     }
 }
