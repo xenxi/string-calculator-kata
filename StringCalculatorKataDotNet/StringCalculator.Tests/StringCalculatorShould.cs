@@ -8,12 +8,6 @@ namespace StringCalculatorKata.Tests
     {
         private StringCalculator stringCalculator;
 
-        [SetUp]
-        public void SetUp()
-        {
-            stringCalculator = new StringCalculator();
-        }
-
         [Test]
         public void return_0_given_empty_string()
         {
@@ -35,6 +29,22 @@ namespace StringCalculatorKata.Tests
         }
 
         [Test]
+        public void return_3_given_string_with_1_and_2_separated_by_comma()
+        {
+            var calculatedValue = stringCalculator.Add("1,2");
+
+            calculatedValue.Should().Be(3);
+        }
+
+        [Test]
+        public void return_5_given_string_with_2_and_3_separated_by_comma()
+        {
+            var calculatedValue = stringCalculator.Add("2,3");
+
+            calculatedValue.Should().Be(5);
+        }
+
+        [Test]
         [TestCase("1", 1)]
         [TestCase("2", 2)]
         public void return_number_given_in_string_with_one_number(string aGivenInputString, int expectedNumber)
@@ -45,20 +55,19 @@ namespace StringCalculatorKata.Tests
         }
 
         [Test]
-        public void return_3_given_string_with_1_and_2_separated_by_comma()
+        [TestCase("1,2", 3)]
+        [TestCase("2,3", 5)]
+        public void return_sum_given_string_with_two_numbers_separated_by_comma(string aGivenString, int expectedValue)
         {
-            var calculatedValue = stringCalculator.Add("1,2");
+            var calculatedValue = stringCalculator.Add(aGivenString);
 
-            calculatedValue.Should().Be(3);
+            calculatedValue.Should().Be(expectedValue);
         }
 
-
-        [Test]
-        public void return_5_given_string_with_2_and_3_separated_by_comma()
+        [SetUp]
+        public void SetUp()
         {
-            var calculatedValue = stringCalculator.Add("2,3");
-
-            calculatedValue.Should().Be(5);
+            stringCalculator = new StringCalculator();
         }
     }
 }
