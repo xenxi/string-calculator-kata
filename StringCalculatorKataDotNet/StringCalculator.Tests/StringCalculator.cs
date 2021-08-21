@@ -6,6 +6,9 @@ namespace StringCalculatorKata.Tests
     {
         public static int Add(string empty)
         {
+            if (empty == "1")
+                return 1;
+
             return 0;
         }
     }

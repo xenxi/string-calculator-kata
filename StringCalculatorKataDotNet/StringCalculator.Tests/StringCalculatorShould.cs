@@ -26,6 +26,14 @@ namespace StringCalculatorKata.Tests
             calculateValue.Should().Be(0);
         }
 
+        [Test]
+        public void return_1_given_string_with_one()
+        {
+            var aGivenStringOne = "1";
 
+            var calculateValue = StringCalculator.Add(aGivenStringOne);
+
+            calculateValue.Should().Be(1);
+        }
     }
 }
