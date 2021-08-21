@@ -23,7 +23,7 @@ namespace StringCalculatorKata.Tests
             return numbers.Sum();
         }
 
-        private (string[] delimiters, string cleanInputString) GetDelimiters(string inputString)
+        private (string[] delimiters, string cleanInputString) GetDelimitersAndCleanInputString(string inputString)
         {
             if (inputString.StartsWith("//"))
             {
@@ -41,25 +41,10 @@ namespace StringCalculatorKata.Tests
 
         private IEnumerable<int> GetNumbers(string inputString)
         {
-            (var delimiters, var cleanInputString) = GetDelimiters(inputString);
+            (var delimiters, var cleanInputString) = GetDelimitersAndCleanInputString(inputString);
 
             return cleanInputString.Split(delimiters, options: StringSplitOptions.RemoveEmptyEntries)
                         .Select(stringNumber => int.Parse(stringNumber));
-        }
-
-        private IEnumerable<int> GetNumbersWithCustomDelimiter(string inputString)
-        {
-            var customDelimiterStr = inputString.Split('\n').First();
-
-            var customDelimiter = customDelimiterStr.Replace("//", string.Empty);
-
-            var numbersString = inputString.Replace($"{customDelimiterStr}\n", string.Empty);
-
-            var delimiters = _default_delimiters.Append(customDelimiter);
-
-            return numbersString
-            .Split(separator: delimiters.ToArray(), options: StringSplitOptions.RemoveEmptyEntries)
-            .Select(stringNumber => int.Parse(stringNumber));
         }
     }
 }
