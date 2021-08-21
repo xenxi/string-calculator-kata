@@ -18,13 +18,17 @@ namespace StringCalculatorKata.Tests
             if (string.IsNullOrEmpty(inputString))
                 return 0;
 
-            IEnumerable<int> numbers;
-            if (inputString.StartsWith("//"))
-                numbers = getNumbersWithCustomDelimiter(inputString);
-            else
-                numbers = getNumberSeparatedByComma(inputString);
+            IEnumerable<int> numbers = getNumbers(inputString);
 
             return numbers.Sum();
+        }
+
+        private IEnumerable<int> getNumbers(string inputString)
+        {
+            if (inputString.StartsWith("//"))
+                return getNumbersWithCustomDelimiter(inputString);
+
+            return getNumberSeparatedByComma(inputString);
         }
 
         private IEnumerable<int> getNumberSeparatedByComma(string inputString)
