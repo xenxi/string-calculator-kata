@@ -18,27 +18,46 @@ namespace StringCalculatorKata.Tests
             if (string.IsNullOrEmpty(inputString))
                 return 0;
 
-            IEnumerable<int> numbers = getNumbers(inputString);
+            IEnumerable<int> numbers = GetNumbers(inputString);
 
             return numbers.Sum();
         }
 
-        private IEnumerable<int> getNumbers(string inputString)
+        private (string[] delimiters, string cleanInputString) GetDelimiters(string inputString)
         {
             if (inputString.StartsWith("//"))
-                return getNumbersWithCustomDelimiter(inputString);
+            {
+                var customDelimiterStr = inputString.Split('\n').First();
 
-            return getNumberSeparatedByComma(inputString);
+                var customDelimiter = customDelimiterStr.Replace("//", string.Empty);
+
+                var cleanInputString = inputString.Replace($"{customDelimiterStr}\n", string.Empty);
+
+                return (_default_delimiters.Append(customDelimiter).ToArray(), cleanInputString);
+            }
+
+            return (_default_delimiters, inputString);
         }
 
-        private IEnumerable<int> getNumberSeparatedByComma(string inputString)
+        private IEnumerable<int> GetNumbers(string inputString)
+        {
+            if (inputString.StartsWith("//"))
+                return GetNumbersWithCustomDelimiter(inputString);
+
+            (var delimiters, var cleanInputString) = GetDelimiters(inputString);
+
+            return cleanInputString.Split(delimiters, options: StringSplitOptions.RemoveEmptyEntries)
+                        .Select(stringNumber => int.Parse(stringNumber));
+        }
+
+        private IEnumerable<int> GetNumberSeparatedByComma(string inputString)
         {
             return inputString
                         .Split(_default_delimiters, options: StringSplitOptions.RemoveEmptyEntries)
                         .Select(stringNumber => int.Parse(stringNumber));
         }
 
-        private IEnumerable<int> getNumbersWithCustomDelimiter(string inputString)
+        private IEnumerable<int> GetNumbersWithCustomDelimiter(string inputString)
         {
             var customDelimiterStr = inputString.Split('\n').First();
 
