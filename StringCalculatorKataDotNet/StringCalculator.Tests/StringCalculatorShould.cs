@@ -6,12 +6,19 @@ namespace StringCalculatorKata.Tests
     [TestFixture]
     public class StringCalculatorShould
     {
+        private StringCalculator stringCalculator;
+
+        [SetUp]
+        public void SetUp()
+        {
+            stringCalculator = new StringCalculator();
+        }
+
         [Test]
         public void return_0_given_empty_string()
         {
             string aGivenEmptyString = string.Empty;
-            var stringCalculator = new StringCalculator();
-            
+
             var calculateValue = stringCalculator.Add(aGivenEmptyString);
 
             calculateValue.Should().Be(0);
@@ -21,8 +28,7 @@ namespace StringCalculatorKata.Tests
         public void return_0_given_null_string()
         {
             string aGivenNullString = null;
-            var stringCalculator = new StringCalculator();
-            
+
             var calculateValue = stringCalculator.Add(aGivenNullString);
 
             calculateValue.Should().Be(0);
@@ -32,8 +38,7 @@ namespace StringCalculatorKata.Tests
         public void return_1_given_string_with_one()
         {
             var aGivenStringOne = "1";
-            var stringCalculator = new StringCalculator();
-            
+
             var calculateValue = stringCalculator.Add(aGivenStringOne);
 
             calculateValue.Should().Be(1);
