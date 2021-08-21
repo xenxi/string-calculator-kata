@@ -5,6 +5,13 @@ namespace StringCalculatorKata.Tests
 {
     public class StringCalculator
     {
+        private readonly string[] _default_delimiters;
+
+        public StringCalculator()
+        {
+            _default_delimiters = new string[] { ",", "\n" };
+        }
+
         public int Add(string inputString)
         {
             if (string.IsNullOrEmpty(inputString))
@@ -16,6 +23,14 @@ namespace StringCalculatorKata.Tests
             return sumMultipleNumberSeparatedByComma(inputString);
         }
 
+        private int sumMultipleNumberSeparatedByComma(string inputString)
+        {
+            return inputString
+                        .Split(_default_delimiters, options: StringSplitOptions.RemoveEmptyEntries)
+                        .Select(stringNumber => int.Parse(stringNumber))
+                        .Sum();
+        } 
+
         private int sumNumberWithCustomDelimiter(string inputString)
         {
             var customDelimiterStr = inputString.Split('\n').First();
@@ -24,17 +39,12 @@ namespace StringCalculatorKata.Tests
 
             var numbersString = inputString.Replace($"{customDelimiterStr}\n", string.Empty);
 
-            var delimiters = new string[] { ",", "\n", customDelimiter };
+            var delimiters = _default_delimiters.Append(customDelimiter);
 
             return numbersString
-            .Split(separator: delimiters, options: StringSplitOptions.RemoveEmptyEntries)
+            .Split(separator: delimiters.ToArray(), options: StringSplitOptions.RemoveEmptyEntries)
             .Select(stringNumber => int.Parse(stringNumber))
             .Sum();
         }
-
-        private int sumMultipleNumberSeparatedByComma(string inputString) => inputString
-            .Split(new char[] { ',', '\n' })
-            .Select(stringNumber => int.Parse(stringNumber))
-            .Sum();
     }
 }
