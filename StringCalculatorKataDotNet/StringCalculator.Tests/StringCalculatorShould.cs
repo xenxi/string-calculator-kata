@@ -44,6 +44,12 @@ namespace StringCalculatorKata.Tests
             calculatedValue.Should().Be(expectedNumber);
         }
 
+        [Test]
+        public void return_3_given_string_with_1_and_2_separated_by_comma()
+        {
+            var calculatedValue = stringCalculator.Add("1,2");
 
+            calculatedValue.Should().Be(3);
+        }
     }
 }
