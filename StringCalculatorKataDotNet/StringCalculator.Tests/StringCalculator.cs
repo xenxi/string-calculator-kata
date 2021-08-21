@@ -12,9 +12,9 @@ namespace StringCalculatorKata.Tests
             return sumMultipleNumberSeparatedByComma(inputString);
         }
 
-        private int sumMultipleNumberSeparatedByComma(string inputString)
-        {
-            return inputString.Split(",").Select(stringNumber => int.Parse(stringNumber)).Sum();
-        }
+        private int sumMultipleNumberSeparatedByComma(string inputString) => inputString
+            .Split(",")
+            .Select(stringNumber => int.Parse(stringNumber))
+            .Sum();
     }
 }
