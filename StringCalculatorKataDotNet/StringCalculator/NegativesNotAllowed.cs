@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace StringCalculatorKata.Tests
+namespace StringCalculatorKata
 {
     public class NegativesNotAllowed : Exception
     {
