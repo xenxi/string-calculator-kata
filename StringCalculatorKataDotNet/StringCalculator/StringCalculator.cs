@@ -18,9 +18,6 @@ namespace StringCalculatorKata
             if (string.IsNullOrEmpty(inputString))
                 return 0;
 
-            if (inputString == "-1")
-                throw new NegativesNotAllowed();
-
             IEnumerable<int> numbers = GetNumbers(inputString);
 
             return numbers.Sum();
@@ -46,8 +43,14 @@ namespace StringCalculatorKata
         {
             (var delimiters, var cleanInputString) = GetDelimitersAndCleanInputString(inputString);
 
-            return cleanInputString.Split(delimiters, options: StringSplitOptions.RemoveEmptyEntries)
-                        .Select(stringNumber => int.Parse(stringNumber));
+            var numbers = cleanInputString.Split(delimiters,
+                                                 options: StringSplitOptions.RemoveEmptyEntries)
+                                           .Select(stringNumber => int.Parse(stringNumber));
+
+            if (numbers.Any(number => number < 0))
+                throw new NegativesNotAllowed();
+
+            return numbers;
         }
     }
 }

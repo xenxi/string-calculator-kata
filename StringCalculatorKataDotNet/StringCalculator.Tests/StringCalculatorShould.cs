@@ -79,6 +79,9 @@ namespace StringCalculatorKata.Tests
 
         [Test]
         [TestCase("-1")]
+        [TestCase("-2")]
+        [TestCase("1\n-2\n4")]
+        [TestCase("1,2\n-4")]
         public void throw_negative_numbers_exception_given_string_with_one_negative_number(string aGivenInputString)
         {
             Action action = () => stringCalculator.Add(aGivenInputString);
