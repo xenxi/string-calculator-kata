@@ -38,7 +38,7 @@ The first line is optional. All existing scenarios should still be supported.
 
 Calling Add with a negative number will throw an exception `“negatives not allowed”` - and the negative that was passed.
 
-If there are multiple negatives, show all of them in the exception message.
+If there are multiple negatives, show all of them in the exception message separated by commas.
 
 ### Step 6
 
