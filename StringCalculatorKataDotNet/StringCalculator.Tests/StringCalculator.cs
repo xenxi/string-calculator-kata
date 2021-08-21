@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace StringCalculatorKata.Tests
@@ -17,21 +18,23 @@ namespace StringCalculatorKata.Tests
             if (string.IsNullOrEmpty(inputString))
                 return 0;
 
+            IEnumerable<int> numbers;
             if (inputString.StartsWith("//"))
-                return sumNumberWithCustomDelimiter(inputString);
+                numbers = getNumbersWithCustomDelimiter(inputString);
+            else
+                numbers = getNumberSeparatedByComma(inputString);
 
-            return sumMultipleNumberSeparatedByComma(inputString);
+            return numbers.Sum();
         }
 
-        private int sumMultipleNumberSeparatedByComma(string inputString)
+        private IEnumerable<int> getNumberSeparatedByComma(string inputString)
         {
             return inputString
                         .Split(_default_delimiters, options: StringSplitOptions.RemoveEmptyEntries)
-                        .Select(stringNumber => int.Parse(stringNumber))
-                        .Sum();
-        } 
+                        .Select(stringNumber => int.Parse(stringNumber));
+        }
 
-        private int sumNumberWithCustomDelimiter(string inputString)
+        private IEnumerable<int> getNumbersWithCustomDelimiter(string inputString)
         {
             var customDelimiterStr = inputString.Split('\n').First();
 
@@ -43,8 +46,7 @@ namespace StringCalculatorKata.Tests
 
             return numbersString
             .Split(separator: delimiters.ToArray(), options: StringSplitOptions.RemoveEmptyEntries)
-            .Select(stringNumber => int.Parse(stringNumber))
-            .Sum();
+            .Select(stringNumber => int.Parse(stringNumber));
         }
     }
 }
