@@ -7,7 +7,7 @@ namespace StringCalculatorKata.Tests
     public class StringCalculatorShould
     {
         [Test]
-        public void return_0_for_empty_string()
+        public void return_0_given_empty_string()
         {
             string aGivenEmptyString = string.Empty;
 
@@ -17,7 +17,7 @@ namespace StringCalculatorKata.Tests
         }
 
         [Test]
-        public void return_0_for_null()
+        public void return_0_given_null_string()
         {
             string aGivenNullString = null;
 
@@ -25,5 +25,7 @@ namespace StringCalculatorKata.Tests
 
             calculateValue.Should().Be(0);
         }
+
+
     }
 }
