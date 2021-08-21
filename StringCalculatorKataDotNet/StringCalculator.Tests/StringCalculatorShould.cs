@@ -17,10 +17,11 @@ namespace StringCalculatorKata.Tests
         }
 
         [Test]
-        public void return_0_for_null() 
+        public void return_0_for_null()
         {
+            string aGivenNullString = null;
 
-            var calculateValue = StringCalculator.Add(null);
+            var calculateValue = StringCalculator.Add(aGivenNullString);
 
             calculateValue.Should().Be(0);
         }
