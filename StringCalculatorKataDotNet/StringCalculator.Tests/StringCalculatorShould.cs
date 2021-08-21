@@ -29,22 +29,6 @@ namespace StringCalculatorKata.Tests
         }
 
         [Test]
-        public void return_3_given_string_with_1_and_2_separated_by_comma()
-        {
-            var calculatedValue = stringCalculator.Add("1,2");
-
-            calculatedValue.Should().Be(3);
-        }
-
-        [Test]
-        public void return_5_given_string_with_2_and_3_separated_by_comma()
-        {
-            var calculatedValue = stringCalculator.Add("2,3");
-
-            calculatedValue.Should().Be(5);
-        }
-
-        [Test]
         [TestCase("1", 1)]
         [TestCase("2", 2)]
         public void return_number_given_in_string_with_one_number(string aGivenInputString, int expectedNumber)
