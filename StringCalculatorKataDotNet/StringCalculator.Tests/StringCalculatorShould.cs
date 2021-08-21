@@ -60,6 +60,15 @@ namespace StringCalculatorKata.Tests
             calculatedValue.Should().Be(expectedValue);
         }
 
+        [Test]
+        [TestCase("//;\n1\n2;4", 7)]
+        public void return_sum_given_string_with_multiple_numbers_separated_by_custom_delimiter(string aGivenString, int expectedValue)
+        {
+            var calculatedValue = stringCalculator.Add(aGivenString);
+
+            calculatedValue.Should().Be(expectedValue);
+        }
+
         [SetUp]
         public void SetUp()
         {

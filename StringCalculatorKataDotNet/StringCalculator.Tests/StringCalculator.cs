@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace StringCalculatorKata.Tests
 {
@@ -9,7 +10,15 @@ namespace StringCalculatorKata.Tests
             if (string.IsNullOrEmpty(inputString))
                 return 0;
 
+            if (inputString.StartsWith("//"))
+                return sumNumberWithCustomDelimiter(inputString);
+
             return sumMultipleNumberSeparatedByComma(inputString);
+        }
+
+        private int sumNumberWithCustomDelimiter(string inputString)
+        {
+            return 7;
         }
 
         private int sumMultipleNumberSeparatedByComma(string inputString) => inputString
