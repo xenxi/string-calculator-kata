@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
+using System;
 
 namespace StringCalculatorKata.Tests
 {
@@ -70,6 +71,14 @@ namespace StringCalculatorKata.Tests
             calculatedValue.Should().Be(expectedValue);
         }
 
+
+        [Test]
+        public void throw_negative_numbers_exception()
+        {
+            Action action = () => stringCalculator.Add("-1");
+
+            action.Should().Throw<NegativesNotAllowed>();
+        }
         [SetUp]
         public void SetUp()
         {

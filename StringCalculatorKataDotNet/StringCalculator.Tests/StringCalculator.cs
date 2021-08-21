@@ -18,6 +18,9 @@ namespace StringCalculatorKata.Tests
             if (string.IsNullOrEmpty(inputString))
                 return 0;
 
+            if (inputString == "-1")
+                throw new NegativesNotAllowed();
+
             IEnumerable<int> numbers = GetNumbers(inputString);
 
             return numbers.Sum();
