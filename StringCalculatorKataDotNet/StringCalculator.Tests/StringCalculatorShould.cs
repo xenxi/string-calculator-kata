@@ -15,5 +15,14 @@ namespace StringCalculatorKata.Tests
 
             calculateValue.Should().Be(0);
         }
+
+        [Test]
+        public void return_0_for_null() 
+        {
+
+            var calculateValue = StringCalculator.Add(null);
+
+            calculateValue.Should().Be(0);
+        }
     }
 }
