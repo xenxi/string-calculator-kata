@@ -99,5 +99,13 @@ namespace StringCalculatorKata.Tests
 
             action.Should().Throw<NegativesNotAllowed>().Where(x => x.Message == aExpectedExceptionMessage);
         }
+
+        [Test]
+        public void ignore_numbers_bigger_than_1000()
+        {
+            var calculatedValue = stringCalculator.Add("1,1000");
+
+            calculatedValue.Should().Be(1);
+        }
     }
 }
