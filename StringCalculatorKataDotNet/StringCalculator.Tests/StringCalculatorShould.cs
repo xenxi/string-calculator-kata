@@ -44,6 +44,12 @@ namespace StringCalculatorKata.Tests
             calculateValue.Should().Be(1);
         }
 
+        [Test]
+        public void return_2_given_string_with_2()
+        {
+            var calculatedValue = stringCalculator.Add("2");
 
+            calculatedValue.Should().Be(2);
+        }
     }
 }
