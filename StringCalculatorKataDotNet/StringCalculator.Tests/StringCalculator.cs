@@ -1,4 +1,6 @@
-﻿namespace StringCalculatorKata.Tests
+﻿using System.Linq;
+
+namespace StringCalculatorKata.Tests
 {
     public class StringCalculator
     {
@@ -7,20 +9,18 @@
             if (string.IsNullOrEmpty(inputString))
                 return 0;
 
-            if (areTwoNumbers(inputString))
-                return sumTwoNumbers(inputString);
+            if (areMultipleNumbersSeparatedByComma(inputString))
+                return sumMultipleNumberSeparatedByComma(inputString);
 
             return int.Parse(inputString);
         }
 
-        private int sumTwoNumbers(string inputString)
+        private int sumMultipleNumberSeparatedByComma(string inputString)
         {
-            var numbers = inputString.Split(",");
-
-            return int.Parse(numbers[0]) + int.Parse(numbers[1]);
+            return inputString.Split(",").Select(stringNumber => int.Parse(stringNumber)).Sum();
         }
 
-        private bool areTwoNumbers(string inputString)
+        private bool areMultipleNumbersSeparatedByComma(string inputString)
         {
             return inputString.Contains(",");
         }
