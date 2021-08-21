@@ -7,11 +7,12 @@
             if (string.IsNullOrEmpty(inputString))
                 return 0;
 
-            if (inputString == "1,2")
-                return 3;
+            if (inputString.Contains(","))
+            {
+                var numbers = inputString.Split(",");
 
-            if (inputString == "2,3")
-                return 5;
+                return int.Parse(numbers[0]) + int.Parse(numbers[1]);
+            }
 
             return int.Parse(inputString);
         }
