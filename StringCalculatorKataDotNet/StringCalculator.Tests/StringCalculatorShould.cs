@@ -35,31 +35,15 @@ namespace StringCalculatorKata.Tests
         }
 
         [Test]
-        public void return_1_given_string_with_1()
-        {
-            var aGivenStringOne = "1";
-
-            var calculateValue = stringCalculator.Add(aGivenStringOne);
-
-            calculateValue.Should().Be(1);
-        }
-
-        [Test]
-        public void return_2_given_string_with_2()
-        {
-            var calculatedValue = stringCalculator.Add("2");
-
-            calculatedValue.Should().Be(2);
-        }
-
-        [Test]
         [TestCase("1", 1)]
         [TestCase("2", 2)]
-        public void returnNumberGivenInStringWithOneNumber(string aGivenInputString, int expectedNumber)
+        public void return_number_given_in_string_with_one_number(string aGivenInputString, int expectedNumber)
         {
             var calculatedValue = stringCalculator.Add(aGivenInputString);
 
             calculatedValue.Should().Be(expectedNumber);
         }
+
+
     }
 }
