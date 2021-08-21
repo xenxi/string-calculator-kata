@@ -51,5 +51,15 @@ namespace StringCalculatorKata.Tests
 
             calculatedValue.Should().Be(2);
         }
+
+        [Test]
+        [TestCase("1", 1)]
+        [TestCase("2", 2)]
+        public void returnNumberGivenInStringWithOneNumber(string aGivenInputString, int expectedNumber)
+        {
+            var calculatedValue = stringCalculator.Add(aGivenInputString);
+
+            calculatedValue.Should().Be(expectedNumber);
+        }
     }
 }
