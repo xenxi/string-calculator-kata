@@ -13,7 +13,7 @@ namespace StringCalculatorKata.Tests
         }
 
         private int sumMultipleNumberSeparatedByComma(string inputString) => inputString
-            .Split(",")
+            .Split(new char[] {',','\n' })
             .Select(stringNumber => int.Parse(stringNumber))
             .Sum();
     }

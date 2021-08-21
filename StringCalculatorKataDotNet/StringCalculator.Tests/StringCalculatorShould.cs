@@ -50,6 +50,16 @@ namespace StringCalculatorKata.Tests
             calculatedValue.Should().Be(expectedValue);
         }
 
+        [Test]
+        [TestCase("1\n2\n4", 7)]
+        [TestCase("2\n3,5,6\n7", 23)]
+        public void return_sum_given_string_with_multiple_numbers_separated_by_comma_or_new_line(string aGivenString, int expectedValue)
+        {
+            var calculatedValue = stringCalculator.Add(aGivenString);
+
+            calculatedValue.Should().Be(expectedValue);
+        }
+
         [SetUp]
         public void SetUp()
         {
