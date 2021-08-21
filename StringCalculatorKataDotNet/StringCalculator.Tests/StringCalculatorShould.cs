@@ -88,5 +88,16 @@ namespace StringCalculatorKata.Tests
 
             action.Should().Throw<NegativesNotAllowed>();
         }
+
+        [Test]
+        [TestCase("-1,-5", "-1,-5")]
+        [TestCase("1\n-2\n4,-5", "-2,-5")]
+        [TestCase("-1,-2\n-4", "-1,-2,-4")]
+        public void throw_negative_numbers_exception_with_negatives_passed(string aGivenInputString, string aExpectedExceptionMessage)
+        {
+            Action action = () => stringCalculator.Add(aGivenInputString);
+
+            action.Should().Throw<NegativesNotAllowed>().Where(x => x.Message == aExpectedExceptionMessage);
+        }
     }
 }

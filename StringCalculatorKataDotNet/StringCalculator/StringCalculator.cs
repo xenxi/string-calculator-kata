@@ -23,6 +23,14 @@ namespace StringCalculatorKata
             return numbers.Sum();
         }
 
+        private static void ensureNoHasNegativeNumbers(IEnumerable<int> numbers)
+        {
+            var negativeNumbers = numbers.Where(number => number < 0).ToList();
+
+            if (negativeNumbers.Any())
+                throw new NegativesNotAllowed(string.Join(",", negativeNumbers));
+        }
+
         private (string[] delimiters, string cleanInputString) GetDelimitersAndCleanInputString(string inputString)
         {
             if (inputString.StartsWith("//"))
@@ -47,8 +55,7 @@ namespace StringCalculatorKata
                                                  options: StringSplitOptions.RemoveEmptyEntries)
                                            .Select(stringNumber => int.Parse(stringNumber));
 
-            if (numbers.Any(number => number < 0))
-                throw new NegativesNotAllowed();
+            ensureNoHasNegativeNumbers(numbers);
 
             return numbers;
         }
