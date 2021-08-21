@@ -41,19 +41,9 @@ namespace StringCalculatorKata.Tests
 
         private IEnumerable<int> GetNumbers(string inputString)
         {
-            if (inputString.StartsWith("//"))
-                return GetNumbersWithCustomDelimiter(inputString);
-
             (var delimiters, var cleanInputString) = GetDelimiters(inputString);
 
             return cleanInputString.Split(delimiters, options: StringSplitOptions.RemoveEmptyEntries)
-                        .Select(stringNumber => int.Parse(stringNumber));
-        }
-
-        private IEnumerable<int> GetNumberSeparatedByComma(string inputString)
-        {
-            return inputString
-                        .Split(_default_delimiters, options: StringSplitOptions.RemoveEmptyEntries)
                         .Select(stringNumber => int.Parse(stringNumber));
         }
 
