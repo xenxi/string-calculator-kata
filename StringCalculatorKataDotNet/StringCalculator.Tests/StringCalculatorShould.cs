@@ -62,6 +62,7 @@ namespace StringCalculatorKata.Tests
 
         [Test]
         [TestCase("//;\n1\n2;4", 7)]
+        [TestCase("//-\n2-3,5,6-7", 23)]
         public void return_sum_given_string_with_multiple_numbers_separated_by_custom_delimiter(string aGivenString, int expectedValue)
         {
             var calculatedValue = stringCalculator.Add(aGivenString);
