@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>StringCalculatorKata</AssemblyName>
+    <RootNamespace>StringCalculatorKata</RootNamespace>
   </PropertyGroup>
 
 </Project>

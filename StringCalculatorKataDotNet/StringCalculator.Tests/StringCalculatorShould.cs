@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace StringCalculator.Tests
+namespace StringCalculatorKata.Tests
 {
     [TestFixture]
     public class StringCalculatorShould
