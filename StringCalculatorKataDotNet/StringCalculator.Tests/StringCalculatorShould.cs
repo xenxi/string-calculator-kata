@@ -71,18 +71,19 @@ namespace StringCalculatorKata.Tests
             calculatedValue.Should().Be(expectedValue);
         }
 
-
-        [Test]
-        public void throw_negative_numbers_exception()
-        {
-            Action action = () => stringCalculator.Add("-1");
-
-            action.Should().Throw<NegativesNotAllowed>();
-        }
         [SetUp]
         public void SetUp()
         {
             stringCalculator = new StringCalculator();
+        }
+
+        [Test]
+        [TestCase("-1")]
+        public void throw_negative_numbers_exception_given_string_with_one_negative_number(string aGivenInputString)
+        {
+            Action action = () => stringCalculator.Add(aGivenInputString);
+
+            action.Should().Throw<NegativesNotAllowed>();
         }
     }
 }
