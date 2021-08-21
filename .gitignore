@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/StringCalculatorKataDotNet/.vs/StringCalculatorKataDotNet
+/StringCalculatorKataDotNet/StringCalculator/bin/Debug/netcoreapp3.1
+/StringCalculatorKataDotNet/StringCalculator/obj
+/StringCalculatorKataDotNet/StringCalculator.Tests/obj
+/StringCalculatorKataDotNet/StringCalculator.Tests/bin/Debug/netcoreapp3.1
