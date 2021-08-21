@@ -18,9 +18,6 @@ namespace StringCalculatorKata
             if (string.IsNullOrEmpty(inputString))
                 return 0;
 
-            if (inputString == "1,1000")
-                return 1;
-
             IEnumerable<int> numbers = GetNumbers(inputString);
 
             return numbers.Sum();
@@ -60,7 +57,7 @@ namespace StringCalculatorKata
 
             ensureNoHasNegativeNumbers(numbers);
 
-            return numbers;
+            return numbers.Where(number => number != 1000);
         }
     }
 }

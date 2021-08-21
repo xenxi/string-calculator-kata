@@ -10,6 +10,17 @@ namespace StringCalculatorKata.Tests
         private StringCalculator stringCalculator;
 
         [Test]
+        [TestCase("2,1000", 2)]
+        [TestCase("1,1000", 1)]
+        [TestCase("1,1000\n5,1000,1", 7)]
+        public void ignore_numbers_bigger_than_1000(string aGivenInputString, int expectedValue)
+        {
+            var calculatedValue = stringCalculator.Add(aGivenInputString);
+
+            calculatedValue.Should().Be(expectedValue);
+        }
+
+        [Test]
         public void return_0_given_empty_string()
         {
             string aGivenEmptyString = string.Empty;
@@ -98,14 +109,6 @@ namespace StringCalculatorKata.Tests
             Action action = () => stringCalculator.Add(aGivenInputString);
 
             action.Should().Throw<NegativesNotAllowed>().Where(x => x.Message == aExpectedExceptionMessage);
-        }
-
-        [Test]
-        public void ignore_numbers_bigger_than_1000()
-        {
-            var calculatedValue = stringCalculator.Add("1,1000");
-
-            calculatedValue.Should().Be(1);
         }
     }
 }
