@@ -19,9 +19,9 @@ namespace StringCalculatorKata.Tests
         {
             string aGivenEmptyString = string.Empty;
 
-            var calculateValue = stringCalculator.Add(aGivenEmptyString);
+            var calculatedValue = stringCalculator.Add(aGivenEmptyString);
 
-            calculateValue.Should().Be(0);
+            calculatedValue.Should().Be(0);
         }
 
         [Test]
@@ -29,9 +29,9 @@ namespace StringCalculatorKata.Tests
         {
             string aGivenNullString = null;
 
-            var calculateValue = stringCalculator.Add(aGivenNullString);
+            var calculatedValue = stringCalculator.Add(aGivenNullString);
 
-            calculateValue.Should().Be(0);
+            calculatedValue.Should().Be(0);
         }
 
         [Test]
