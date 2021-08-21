@@ -35,7 +35,7 @@ namespace StringCalculatorKata.Tests
         }
 
         [Test]
-        public void return_1_given_string_with_one()
+        public void return_1_given_string_with_1()
         {
             var aGivenStringOne = "1";
 
@@ -43,5 +43,7 @@ namespace StringCalculatorKata.Tests
 
             calculateValue.Should().Be(1);
         }
+
+
     }
 }
