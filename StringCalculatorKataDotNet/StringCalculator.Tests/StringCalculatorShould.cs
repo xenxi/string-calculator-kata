@@ -9,7 +9,9 @@ namespace StringCalculatorKata.Tests
         [Test]
         public void return_0_for_empty_string()
         {
-            var calculateValue = StringCalculator.Add(string.Empty);
+            string aGivenEmptyString = string.Empty;
+
+            var calculateValue = StringCalculator.Add(aGivenEmptyString);
 
             calculateValue.Should().Be(0);
         }
