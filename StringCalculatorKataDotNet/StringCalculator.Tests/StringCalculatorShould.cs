@@ -51,5 +51,14 @@ namespace StringCalculatorKata.Tests
 
             calculatedValue.Should().Be(3);
         }
+
+
+        [Test]
+        public void return_5_given_string_with_2_and_3_separated_by_comma()
+        {
+            var calculatedValue = stringCalculator.Add("2,3");
+
+            calculatedValue.Should().Be(5);
+        }
     }
 }
