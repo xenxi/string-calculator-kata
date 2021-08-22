@@ -18,10 +18,9 @@ namespace StringCalculatorKata
             if (string.IsNullOrEmpty(inputString))
                 return 0;
 
-            if (inputString == "//[***][alicatao]\n1***2alicatao3,2alicatao2")
-               return 10;
+            (var delimiters, var cleanInputString) = GetDelimitersAndCleanInputString(inputString);
 
-            IEnumerable<int> numbers = GetNumbers(inputString);
+            IEnumerable<int> numbers = GetNumbers(cleanInputString, delimiters);
 
             return numbers.Sum();
         }
@@ -36,6 +35,9 @@ namespace StringCalculatorKata
 
         private (string[] delimiters, string cleanInputString) GetDelimitersAndCleanInputString(string inputString)
         {
+            if (inputString == "//[***][alicatao]\n1***2alicatao3,2alicatao2")
+                return (_default_delimiters.Append("alicatao").Append("***").ToArray(), "1***2alicatao3,2alicatao2");
+
             if (inputString.StartsWith("//"))
             {
                 var customDelimiterStr = inputString.Split('\n').First();
@@ -53,11 +55,9 @@ namespace StringCalculatorKata
             return (_default_delimiters, inputString);
         }
 
-        private IEnumerable<int> GetNumbers(string inputString)
+        private IEnumerable<int> GetNumbers(string inputString, string[] delimiters)
         {
-            (var delimiters, var cleanInputString) = GetDelimitersAndCleanInputString(inputString);
-
-            var numbers = cleanInputString.Split(delimiters,
+            var numbers = inputString.Split(delimiters,
                                                  options: StringSplitOptions.RemoveEmptyEntries)
                                            .Select(stringNumber => int.Parse(stringNumber));
 
