@@ -5,7 +5,10 @@ namespace StringCalculatorKata
 {
     public class Numbers
     {
-        private readonly IList<int> _numbers;
+        private const int MAX_NUMBER_VALUE = 1000;
+        private const int MIN_NUMBER_VALUE = 0;
+
+        private readonly ICollection<int> _numbers;
 
         public Numbers(IEnumerable<int> numbers)
         {
@@ -16,15 +19,12 @@ namespace StringCalculatorKata
 
         private void ensureNoHasNegativeNumbers()
         {
-            var negativeNumbers = _numbers.Where(number => number < 0);
+            var negativeNumbers = _numbers.Where(number => number < MIN_NUMBER_VALUE);
 
             if (negativeNumbers.Any())
                 throw new NegativesNotAllowed(string.Join(",", negativeNumbers));
         }
 
-        public int Sum()
-        {
-            return _numbers.Where(number => number != 1000).Sum();
-        }
+        public int Sum() => _numbers.Where(number => number != MAX_NUMBER_VALUE).Sum();
     }
 }
