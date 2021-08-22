@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 namespace StringCalculatorKata
 {
@@ -19,9 +18,9 @@ namespace StringCalculatorKata
 
         private Numbers GetNumbers(DelimitedString delimitedNumbersString)
         {
-            var numbers = delimitedNumbersString.Value.Split(delimitedNumbersString.Delimiters,
-                                                 options: StringSplitOptions.RemoveEmptyEntries)
-                                           .Select(stringNumber => int.Parse(stringNumber));
+            var numbers = delimitedNumbersString
+                .Split()
+                .Select(stringNumber => int.Parse(stringNumber));
 
             return new Numbers(numbers);
         }

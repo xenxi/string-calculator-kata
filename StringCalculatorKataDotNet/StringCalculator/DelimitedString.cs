@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace StringCalculatorKata
 {
@@ -13,6 +15,11 @@ namespace StringCalculatorKata
 
         public string[] Delimiters { get; }
         public string Value { get; }
+
+        public IEnumerable<string> Split()
+        {
+            return Value.Split(Delimiters, options: StringSplitOptions.RemoveEmptyEntries);
+        }
 
         private (string[] delimiters, string cleanInputString) GetDelimitersAndCleanInputString(string inputString)
         {
