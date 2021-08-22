@@ -11,16 +11,13 @@ namespace StringCalculatorKata
         public DelimitedString(string inputString)
         {
             (this.delimiters, this.value) = GetDelimitersAndCleanInputString(inputString);
+
+            this.Value = Split();
         }
 
+        public IEnumerable<string> Value { get; }
         private string[] delimiters { get; }
         private string value { get; }
-
-        public IEnumerable<string> Split()
-        {
-            return value.Split(delimiters, options: StringSplitOptions.RemoveEmptyEntries);
-        }
-
         private (string[] delimiters, string cleanInputString) GetDelimitersAndCleanInputString(string inputString)
         {
             if (inputString.StartsWith("//"))
@@ -35,6 +32,11 @@ namespace StringCalculatorKata
             }
 
             return (_default_delimiters, inputString);
+        }
+
+        private IEnumerable<string> Split()
+        {
+            return value.Split(delimiters, options: StringSplitOptions.RemoveEmptyEntries);
         }
     }
 }
