@@ -10,21 +10,21 @@ namespace StringCalculatorKata
         public Numbers(IEnumerable<int> numbers)
         {
             _numbers = numbers ?? Enumerable.Empty<int>();
+
+            ensureNoHasNegativeNumbers();
         }
 
-        public IEnumerable<int> GetCollection()
+        private void ensureNoHasNegativeNumbers()
         {
             var negativeNumbers = _numbers.Where(number => number < 0);
 
             if (negativeNumbers.Any())
                 throw new NegativesNotAllowed(string.Join(",", negativeNumbers));
-
-            return _numbers;
         }
 
         public int Sum()
         {
-            return GetCollection().Where(number => number != 1000).Sum();
+            return _numbers.Where(number => number != 1000).Sum();
         }
     }
 }
