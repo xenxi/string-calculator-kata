@@ -19,7 +19,7 @@ namespace StringCalculatorKata
 
             (var delimiters, var cleanInputString) = GetDelimitersAndCleanInputString(inputString);
 
-            var numbers = GetNumbers(cleanInputString, delimiters);
+            var numbers = GetNumbers(new DelimitedNumbersString(cleanInputString, delimiters));
 
             return numbers.Sum();
         }
@@ -40,9 +40,9 @@ namespace StringCalculatorKata
             return (_default_delimiters, inputString);
         }
 
-        private Numbers GetNumbers(string inputString, string[] delimiters)
+        private Numbers GetNumbers(DelimitedNumbersString delimitedNumbersString)
         {
-            var numbers = inputString.Split(delimiters,
+            var numbers = delimitedNumbersString.inputString.Split(delimitedNumbersString.delimiters,
                                                  options: StringSplitOptions.RemoveEmptyEntries)
                                            .Select(stringNumber => int.Parse(stringNumber));
 
