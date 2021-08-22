@@ -10,15 +10,15 @@ namespace StringCalculatorKata
 
         public DelimitedString(string inputString)
         {
-            (this.Delimiters, this.Value) = GetDelimitersAndCleanInputString(inputString);
+            (this.delimiters, this.value) = GetDelimitersAndCleanInputString(inputString);
         }
 
-        public string[] Delimiters { get; }
-        public string Value { get; }
+        private string[] delimiters { get; }
+        private string value { get; }
 
         public IEnumerable<string> Split()
         {
-            return Value.Split(Delimiters, options: StringSplitOptions.RemoveEmptyEntries);
+            return value.Split(delimiters, options: StringSplitOptions.RemoveEmptyEntries);
         }
 
         private (string[] delimiters, string cleanInputString) GetDelimitersAndCleanInputString(string inputString)
