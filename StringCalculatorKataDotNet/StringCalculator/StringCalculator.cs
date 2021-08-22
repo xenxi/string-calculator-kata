@@ -26,18 +26,9 @@ namespace StringCalculatorKata
 
         private (string[] delimiters, string cleanInputString) GetDelimitersAndCleanInputString(string inputString)
         {
-            if (inputString.StartsWith("//"))
-            {
-                var customDelimiterStr = inputString.Split('\n').First();
+            var delimiters = new DelimitedNumbersString(inputString);
 
-                var customDelimiters = customDelimiterStr.Replace("//", string.Empty).Split("[").Select(strDelimiter => strDelimiter.Replace("]", string.Empty));
-
-                var cleanInputString = inputString.Replace($"{customDelimiterStr}\n", string.Empty);
-
-                return (_default_delimiters.Union(customDelimiters).ToArray(), cleanInputString);
-            }
-
-            return (_default_delimiters, inputString);
+            return (delimiters.delimiters, delimiters.inputString);
         }
 
         private Numbers GetNumbers(DelimitedNumbersString delimitedNumbersString)
