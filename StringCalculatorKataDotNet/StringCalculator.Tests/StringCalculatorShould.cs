@@ -20,13 +20,13 @@ namespace StringCalculatorKata.Tests
         }
 
         [Test]
-        public void allow_multiple_custom_delimiters()
+        [TestCase("//[*][a]\n1*2a3,2a5*2", 15)]
+        [TestCase("//[***][alicatao]\n1***2alicatao3,2alicatao2", 10)]
+        public void allow_multiple_custom_delimiters_with_any_length(string aGivenInputString, int expectedValue)
         {
-            const string aGivenInputString = "//[***][alicatao]\n1***2alicatao3,2alicatao2";
-
             var calculatedValue = stringCalculator.Add(aGivenInputString);
 
-            calculatedValue.Should().Be(10);
+            calculatedValue.Should().Be(expectedValue);
         }
 
         [Test]
