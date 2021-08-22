@@ -63,6 +63,7 @@ namespace StringCalculatorKata.Tests
         [Test]
         [TestCase("1", 1)]
         [TestCase("2", 2)]
+        [TestCase("0", 0)]
         public void return_number_given_in_string_with_one_number(string aGivenInputString, int expectedNumber)
         {
             var calculatedValue = stringCalculator.Add(aGivenInputString);
