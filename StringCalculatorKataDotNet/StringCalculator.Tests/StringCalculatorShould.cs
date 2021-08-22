@@ -10,6 +10,26 @@ namespace StringCalculatorKata.Tests
         private StringCalculator stringCalculator;
 
         [Test]
+        [TestCase("//[***]\n1***2***3", 6)]
+        [TestCase("//[alicatao]\n9alicatao2alicatao6", 17)]
+        public void allow_custom_delimiters_with_any_length_when_they_are_between_brackets(string aGivenString, int expectedValue)
+        {
+            var calculatedValue = stringCalculator.Add(aGivenString);
+
+            calculatedValue.Should().Be(expectedValue);
+        }
+
+        [Test]
+        public void allow_multiple_custom_delimiters()
+        {
+            const string aGivenInputString = "//[***][alicatao]\n1***2alicatao3,2alicatao2";
+
+            var calculatedValue = stringCalculator.Add(aGivenInputString);
+
+            calculatedValue.Should().Be(10);
+        }
+
+        [Test]
         [TestCase("2,1000", 2)]
         [TestCase("1,1000", 1)]
         [TestCase("1,1000\n5,1000,1", 7)]
@@ -109,16 +129,6 @@ namespace StringCalculatorKata.Tests
             Action action = () => stringCalculator.Add(aGivenInputString);
 
             action.Should().Throw<NegativesNotAllowed>().Where(x => x.Message == aExpectedExceptionMessage);
-        }
-
-        [Test]
-        [TestCase("//[***]\n1***2***3", 6)]
-        [TestCase("//[alicatao]\n9alicatao2alicatao6", 17)]
-        public void allow_delimiters_with_any_length_when_they_are_between_brackets(string aGivenString, int expectedValue)
-        {
-            var calculatedValue = stringCalculator.Add(aGivenString);
-
-            calculatedValue.Should().Be(expectedValue);
         }
     }
 }
