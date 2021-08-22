@@ -114,7 +114,7 @@ namespace StringCalculatorKata.Tests
         [Test]
         [TestCase("//[***]\n1***2***3", 6)]
         [TestCase("//[alicatao]\n9alicatao2alicatao6", 17)]
-        public void return_sum_given_string_with_multiple_numbers_separated_by_custom_delimiter_between_brackets_with_any_length(string aGivenString, int expectedValue)
+        public void allow_delimiters_with_any_length_when_they_are_between_brackets(string aGivenString, int expectedValue)
         {
             var calculatedValue = stringCalculator.Add(aGivenString);
 
