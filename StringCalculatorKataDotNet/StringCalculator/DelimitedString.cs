@@ -2,16 +2,16 @@
 
 namespace StringCalculatorKata
 {
-    public class DelimitedNumbersString
+    public class DelimitedString
     {
         private readonly string[] _default_delimiters = new string[] { ",", "\n" };
 
-        public DelimitedNumbersString(string inputString)
+        public DelimitedString(string inputString)
         {
             (this.delimiters, this.inputString) = GetDelimitersAndCleanInputString(inputString);
         }
 
-        public DelimitedNumbersString(string inputString, string[] delimiters)
+        public DelimitedString(string inputString, string[] delimiters)
         {
             this.inputString = inputString;
             this.delimiters = delimiters;

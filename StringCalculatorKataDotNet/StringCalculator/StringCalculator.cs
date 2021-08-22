@@ -10,14 +10,14 @@ namespace StringCalculatorKata
             if (string.IsNullOrEmpty(inputString))
                 return 0;
 
-            var delimitedNumbersString = new DelimitedNumbersString(inputString);
+            var delimitedNumbersString = new DelimitedString(inputString);
 
             var numbers = GetNumbers(delimitedNumbersString);
 
             return numbers.Sum();
         }
 
-        private Numbers GetNumbers(DelimitedNumbersString delimitedNumbersString)
+        private Numbers GetNumbers(DelimitedString delimitedNumbersString)
         {
             var numbers = delimitedNumbersString.inputString.Split(delimitedNumbersString.delimiters,
                                                  options: StringSplitOptions.RemoveEmptyEntries)
