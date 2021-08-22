@@ -5,11 +5,11 @@ namespace StringCalculatorKata
 {
     public class Numbers
     {
-        private readonly IEnumerable<int> _numbers;
+        private readonly IList<int> _numbers;
 
         public Numbers(IEnumerable<int> numbers)
         {
-            _numbers = numbers ?? Enumerable.Empty<int>();
+            _numbers = (numbers ?? Enumerable.Empty<int>()).ToList();
 
             ensureNoHasNegativeNumbers();
         }
