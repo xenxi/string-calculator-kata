@@ -11,12 +11,6 @@ namespace StringCalculatorKata
             (this.delimiters, this.inputString) = GetDelimitersAndCleanInputString(inputString);
         }
 
-        public DelimitedString(string inputString, string[] delimiters)
-        {
-            this.inputString = inputString;
-            this.delimiters = delimiters;
-        }
-
         public string[] delimiters { get; }
         public string inputString { get; }
 
