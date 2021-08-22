@@ -22,5 +22,9 @@ namespace StringCalculatorKata
             return _numbers;
         }
 
+        public int Sum()
+        {
+            return GetCollection().Where(number => number != 1000).Sum();
+        }
     }
 }

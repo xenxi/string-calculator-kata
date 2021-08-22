@@ -20,12 +20,11 @@ namespace StringCalculatorKata
 
             (var delimiters, var cleanInputString) = GetDelimitersAndCleanInputString(inputString);
 
-            IEnumerable<int> numbers = GetNumbers(cleanInputString, delimiters);
+            var numbers = GetNumbers(cleanInputString, delimiters);
 
             return numbers.Sum();
         }
 
-  
         private (string[] delimiters, string cleanInputString) GetDelimitersAndCleanInputString(string inputString)
         {
             if (inputString.StartsWith("//"))
@@ -42,15 +41,13 @@ namespace StringCalculatorKata
             return (_default_delimiters, inputString);
         }
 
-        private IEnumerable<int> GetNumbers(string inputString, string[] delimiters)
+        private Numbers GetNumbers(string inputString, string[] delimiters)
         {
             var numbers = inputString.Split(delimiters,
                                                  options: StringSplitOptions.RemoveEmptyEntries)
                                            .Select(stringNumber => int.Parse(stringNumber));
 
-            var numbersValueObject = new Numbers(numbers);
-
-            return numbersValueObject.GetCollection().Where(number => number != 1000);
+            return new Numbers(numbers);
         }
     }
 }
