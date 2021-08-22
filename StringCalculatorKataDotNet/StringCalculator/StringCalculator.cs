@@ -35,21 +35,15 @@ namespace StringCalculatorKata
 
         private (string[] delimiters, string cleanInputString) GetDelimitersAndCleanInputString(string inputString)
         {
-            if (inputString == "//[***][alicatao]\n1***2alicatao3,2alicatao2")
-                return (_default_delimiters.Append("alicatao").Append("***").ToArray(), "1***2alicatao3,2alicatao2");
-
             if (inputString.StartsWith("//"))
             {
                 var customDelimiterStr = inputString.Split('\n').First();
 
-                string customDelimiter = customDelimiterStr
-                    .Replace("//", string.Empty)
-                    .Replace("[", string.Empty)
-                    .Replace("]", string.Empty);
+                var customDelimiters = customDelimiterStr.Replace("//", string.Empty).Split("[").Select(strDelimiter => strDelimiter.Replace("]", string.Empty));
 
                 var cleanInputString = inputString.Replace($"{customDelimiterStr}\n", string.Empty);
 
-                return (_default_delimiters.Append(customDelimiter).ToArray(), cleanInputString);
+                return (_default_delimiters.Union(customDelimiters).ToArray(), cleanInputString);
             }
 
             return (_default_delimiters, inputString);
