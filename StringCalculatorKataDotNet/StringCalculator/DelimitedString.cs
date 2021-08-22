@@ -8,11 +8,11 @@ namespace StringCalculatorKata
 
         public DelimitedString(string inputString)
         {
-            (this.delimiters, this.inputString) = GetDelimitersAndCleanInputString(inputString);
+            (this.Delimiters, this.Value) = GetDelimitersAndCleanInputString(inputString);
         }
 
-        public string[] delimiters { get; }
-        public string inputString { get; }
+        public string[] Delimiters { get; }
+        public string Value { get; }
 
         private (string[] delimiters, string cleanInputString) GetDelimitersAndCleanInputString(string inputString)
         {

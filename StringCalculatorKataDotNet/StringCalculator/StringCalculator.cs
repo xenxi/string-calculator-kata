@@ -19,7 +19,7 @@ namespace StringCalculatorKata
 
         private Numbers GetNumbers(DelimitedString delimitedNumbersString)
         {
-            var numbers = delimitedNumbersString.inputString.Split(delimitedNumbersString.delimiters,
+            var numbers = delimitedNumbersString.Value.Split(delimitedNumbersString.Delimiters,
                                                  options: StringSplitOptions.RemoveEmptyEntries)
                                            .Select(stringNumber => int.Parse(stringNumber));
 
