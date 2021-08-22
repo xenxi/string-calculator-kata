@@ -20,6 +20,7 @@ namespace StringCalculatorKata.Tests
         }
 
         [Test]
+
         [TestCase("//[*][a]\n1*2a3,2a5*2", 15)]
         [TestCase("//[***][alicatao]\n1***2alicatao3,2alicatao2", 10)]
         public void allow_multiple_custom_delimiters_with_any_length(string aGivenInputString, int expectedValue)
@@ -27,6 +28,14 @@ namespace StringCalculatorKata.Tests
             var calculatedValue = stringCalculator.Add(aGivenInputString);
 
             calculatedValue.Should().Be(expectedValue);
+        }
+        [Test]
+        public void ignore_empty_custom_delimiter()
+        {
+            string aGivenInputString = "//[*][][a]\n1*2a3,2a5*2";
+            var calculatedValue = stringCalculator.Add(aGivenInputString);
+
+            calculatedValue.Should().Be(15);
         }
 
         [Test]
