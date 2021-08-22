@@ -30,12 +30,13 @@ namespace StringCalculatorKata.Tests
             calculatedValue.Should().Be(expectedValue);
         }
         [Test]
-        public void ignore_empty_custom_delimiter()
+        [TestCase("//[*][][a]\n1*2a3,2a5*2", 15)]
+        [TestCase("//\n1,2,3,2\n2", 10)]
+        public void ignore_empty_custom_delimiter(string aGivenInputString, int expectedValue)
         {
-            string aGivenInputString = "//[*][][a]\n1*2a3,2a5*2";
             var calculatedValue = stringCalculator.Add(aGivenInputString);
 
-            calculatedValue.Should().Be(15);
+            calculatedValue.Should().Be(expectedValue);
         }
 
         [Test]
