@@ -25,14 +25,7 @@ namespace StringCalculatorKata
             return numbers.Sum();
         }
 
-        private static void ensureNoHasNegativeNumbers(IEnumerable<int> numbers)
-        {
-            var negativeNumbers = numbers.Where(number => number < 0).ToList();
-
-            if (negativeNumbers.Any())
-                throw new NegativesNotAllowed(string.Join(",", negativeNumbers));
-        }
-
+  
         private (string[] delimiters, string cleanInputString) GetDelimitersAndCleanInputString(string inputString)
         {
             if (inputString.StartsWith("//"))
@@ -55,9 +48,9 @@ namespace StringCalculatorKata
                                                  options: StringSplitOptions.RemoveEmptyEntries)
                                            .Select(stringNumber => int.Parse(stringNumber));
 
-            ensureNoHasNegativeNumbers(numbers);
+            var numbersValueObject = new Numbers(numbers);
 
-            return numbers.Where(number => number != 1000);
+            return numbersValueObject.GetCollection().Where(number => number != 1000);
         }
     }
 }
