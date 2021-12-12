@@ -5,4 +5,9 @@ describe('StringCalculator should', () => {
 
         expect(result).toBe(0);
     });
+    it('return 0 when string is 0', () => {
+        const result = Add('0');
+
+        expect(result).toBe(0);
+    });
 });
