@@ -4,8 +4,11 @@ export function Add(input: string): number {
   }
 
   const numbers = ReadNumbers(input);
+  return Sum(numbers);
+}
 
-  return numbers.reduce((a: number,b: number)=> a + b);
+function Sum(numbers: number[]): number {
+  return numbers.reduce((a: number, b: number) => a + b);
 }
 
 function ReadNumbers(input: string): number[] {
