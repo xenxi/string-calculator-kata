@@ -3,9 +3,13 @@ export function Add(input: string): number {
     return 0;
   }
 
-  const numbers = input.split(',').map(stringNumber => Number(stringNumber));
+  const numbers = ReadNumbers(input);
 
   return numbers.reduce((a: number,b: number)=> a + b);
+}
+
+function ReadNumbers(input: string): number[] {
+  return input.split(',').map(stringNumber => Number(stringNumber));
 }
 
 function isEmptyString(input: string): boolean {
