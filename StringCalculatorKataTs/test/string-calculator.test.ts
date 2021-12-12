@@ -20,4 +20,9 @@ describe('StringCalculator should', () => {
 
         expect(result).toBe(2);
     });
+    it('return 3 when string is 1,2', () => {
+        const result = Add('1,2');
+
+        expect(result).toBe(3);
+    });
 });
