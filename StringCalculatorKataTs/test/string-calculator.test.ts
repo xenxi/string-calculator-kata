@@ -10,4 +10,14 @@ describe('StringCalculator should', () => {
 
         expect(result).toBe(0);
     });
+    it('return 1 when string is 1', () => {
+        const result = Add('1');
+
+        expect(result).toBe(1);
+    });
+    it('return 2 when string is 2', () => {
+        const result = Add('2');
+
+        expect(result).toBe(2);
+    });
 });
