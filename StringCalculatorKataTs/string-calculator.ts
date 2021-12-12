@@ -1,8 +1,8 @@
 export function Add(input: string): number {
-  if (!input) {
+  if (isEmptyString(input)) {
     return 0;
   }
-  
+
   const numbers = input.split(',').map(stringNumber => Number(stringNumber));
   let total = 0;
 
@@ -12,3 +12,8 @@ export function Add(input: string): number {
 
   return total;
 }
+
+function isEmptyString(input: string): boolean {
+  return !input;
+}
+
